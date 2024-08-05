@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const linkItem = document.createElement('li');
             linkItem.className = 'list-group-item';
             linkItem.innerHTML = `
-                <a href="${linkUrl}" target="_blank">${linkTitle}</a>
+                <a href="${encodeURI(linkUrl)}" target="_blank">${linkTitle}</a>
                 <button class="btn btn-primary btn-sm float-right" onclick="deleteLink(this)">
                     <i class="fas fa-trash"></i>
                 </button>
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const linkItem = document.createElement('li');
                 linkItem.className = 'list-group-item';
                 linkItem.innerHTML = `
-                    <a href="${link.url}" target="_blank">${link.title}</a>
+                    <a href="${encodeURI(link.url)}" target="_blank">${link.title}</a>
                     <button class="btn btn-primary btn-sm float-right" onclick="deleteLink(this)">
                         <i class="fas fa-trash"></i>
                     </button>
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'bookmark_buddy_export.json';
+        a.download = 'bookmarkBuddy_export.json';
         a.click();
         URL.revokeObjectURL(url);
     }
