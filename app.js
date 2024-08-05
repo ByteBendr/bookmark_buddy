@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'website_organizer.json';
+        a.download = 'bookmakr_buddy_export.json';
         a.click();
         URL.revokeObjectURL(url);
     }
