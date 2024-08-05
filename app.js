@@ -54,17 +54,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const linkTitle = button.parentElement.previousElementSibling.previousElementSibling.value.trim();
         const linkUrl = button.parentElement.previousElementSibling.value.trim();
         if (linkTitle && linkUrl) {
+            // Validate and format the link URL
+            const formattedUrl = formatUrl(linkUrl);
             const linkList = button.closest('.card-body').querySelector('.linkList');
             const linkItem = document.createElement('li');
             linkItem.className = 'list-group-item';
             linkItem.innerHTML = `
-                <a href="${encodeURI(linkUrl)}" target="_blank">${linkTitle}</a>
+                <a href="${formattedUrl}" target="_blank" rel="noopener noreferrer">${linkTitle}</a>
                 <button class="btn btn-primary btn-sm float-right" onclick="deleteLink(this)">
                     <i class="fas fa-trash"></i>
                 </button>
             `;
             linkList.appendChild(linkItem);
             saveLink(button.closest('.category').querySelector('h5').textContent, linkTitle, linkUrl);
+        }
+    }
+
+    function formatUrl(url) {
+        try {
+            // If the URL does not start with http:// or https://, add http://
+            let formattedUrl = url.trim();
+            if (!/^https?:\/\//i.test(formattedUrl)) {
+                formattedUrl = 'http://' + formattedUrl;
+            }
+            new URL(formattedUrl); // Check if it's a valid URL
+            return formattedUrl;
+        } catch (e) {
+            console.error('Invalid URL:', url);
+            return ''; // Return an empty string if the URL is invalid
         }
     }
 
@@ -119,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const linkItem = document.createElement('li');
                 linkItem.className = 'list-group-item';
                 linkItem.innerHTML = `
-                    <a href="${encodeURI(link.url)}" target="_blank">${link.title}</a>
+                    <a href="${encodeURI(link.url)}" target="_blank" rel="noopener noreferrer">${link.title}</a>
                     <button class="btn btn-primary btn-sm float-right" onclick="deleteLink(this)">
                         <i class="fas fa-trash"></i>
                     </button>
@@ -158,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'bookmarkBuddy_export.json';
+        a.download = 'categories.json';
         a.click();
         URL.revokeObjectURL(url);
     }
