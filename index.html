@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookmarkBuddy</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">BookmarkBuddy</h1>
+
+        <div class="dark-mode-toggle mb-4">
+            <input type="checkbox" id="darkModeToggle">
+            <label for="darkModeToggle">
+                <span class="toggle-ball">
+                    <i class="fas fa-sun"></i>
+                </span>
+            </label>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" id="categoryName" class="form-control" placeholder="New Category">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="addCategoryBtn"><i class="fas fa-plus"></i></button>
+                <button class="btn btn-secondary" type="button" id="downloadBtn"><i class="fas fa-download"></i></button>
+            </div>
+        </div>
+
+        <div id="categories">
+            <!-- Categories will be appended here -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="app.js"></script>
+</body>
+</html>
